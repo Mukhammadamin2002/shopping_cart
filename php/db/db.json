@@ -1,0 +1,22 @@
+{
+    "products": [
+    		{
+    		"name": "MackBook",
+    		"price": "999.99",
+    		"currency": "$",
+            "image_path": "images/laptop.jpg"
+    	},
+    	{
+    		"name": "Drone Camera",
+    		"price": "45.00",
+    		"currency": "$",
+            "image_path": "images/Camera.jpg"
+    	},
+    	{
+    		"name": "PS5 Joystick",
+    		"price": "60.99",
+    		"currency": "$",
+            "image_path": "images/Joystick.jpg"
+    	},
+    ]
+}
