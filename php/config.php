@@ -1,4 +1,4 @@
 <?php 
-define('DB_NAME', 'db.json');
+define('DATABASE_NAME', 'db.json');
 
  ?>

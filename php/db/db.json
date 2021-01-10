@@ -1,6 +1,6 @@
 {
     "products": [
-    		{
+    	 	{
     		"name": "MackBook",
     		"price": "999.99",
     		"currency": "$",
@@ -17,6 +17,6 @@
     		"price": "60.99",
     		"currency": "$",
             "image_path": "images/Joystick.jpg"
-    	},
+    	}
     ]
 }
