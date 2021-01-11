@@ -48,7 +48,7 @@ $products = get_products();
 			 					</div>
 			 				</div>
 			 				<div class="card-footer text-right">
-			 					<div style="margin-left: 170px">
+			 					<div>
 			 							Total: <strong><?php echo $product['currency'] . $amount * $product['price'] ?></strong>
 			 					</div>
 			 				</div>
