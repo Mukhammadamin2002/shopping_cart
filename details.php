@@ -90,6 +90,7 @@ $products = get_products();
 					        <label class="mt-2" for="female" class="radio">Female</label>
 					        <input type="radio" value="None" id="other" name="gender" />
 					        <label class="mt-2" for="other" class="radio">Other</label>
+					        <br>
 					        <label for="inputState" class="form-label">State</label>
 					        <select id="inputState" class="form-select">
 					        	<option selected="">Choose ...</option>

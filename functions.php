@@ -1,5 +1,4 @@
 <?php 
-include "details.php";
 
 $email = '';
 $phone = '';
@@ -28,12 +27,13 @@ if (isset($_POST['submit'])) {
 
 
 }
- function sanitize($data) {
+
+     function sanitize($data)
+   {
     $data = trim($data);
-    $data = stripcslashes($data);
+    $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-	}
-
+   }
 
 ?>
