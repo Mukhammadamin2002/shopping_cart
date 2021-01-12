@@ -12,7 +12,7 @@ if (isset($_POST['checkout'])) {
 
 	foreach ($_SESSION['cart'] as $key => $amount) {
 		$product = $products[$key];
-		$msg .= $product['name'] .' '. $product['price'] .  '*'  . $amount . ' | ';
+		$msg .= $product['name'] .' '. $product['price'] .  '*'  . $amount . ' Total:' . $product['price'] * $amount .  ' | ';
 	}
 
 	send_tg_msg($msg);
