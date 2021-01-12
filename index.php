@@ -35,8 +35,7 @@ if (isset($_POST['add_button'])) {
 	<div class="row">
 		<div class="col-8 offset-2">
 				<?php if (isset($_SESSION['success'])): ?>
-			<div class="alert alert-success text-center">
-
+					<div class="alert alert-success text-center">
 					<?php echo $_SESSION['success'];
 					 ?>
 					<?php unset($_SESSION['success']) ?>
@@ -69,51 +68,25 @@ if (isset($_POST['add_button'])) {
 	</div>
 </div>
 	 <div class="container">
-	  <div class="row px-5 pt-5">
-	  	<?php foreach ($products as $key => $product): ?>
-	    <div class="col-md-4 mt-4 mt-sm-0 card-container">
-	      <div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
-	        <img class="img-fluid d-block mx-auto" src="<?php echo $product['image_path'] ?>" alt="">
-	        <div class="card-body p-4 py-0 h-xs-440p">
-	          <h5 class="card-title font-weight-semi-bold mb-3 w-xl-220p mx-auto"><?php echo $product['name'] ?></h5>
-	          <p class="price"><?php echo $product['currency'].'  '.$product['price'] ?></p>
-	        </div>
-	        	<form method="post">
-	        		<input type="hidden" name="product_key" value="<?php echo $key; ?>">
-			        <p class="btn w-100 px-4 mx-auto">
-			          <input type="submit" class="btn btn-outline-dark btn-lg w-100" name="add_button" value="Buy Now">
-			        </p>
-	        	</form>
-	      </div>
-	    </div>
-	    <?php endforeach; ?>
-	   </div>
-
-	    <!-- <div class="col-md-4 mt-4 mt-sm-0 card-container">
-	      <div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
-	        <img class="img-fluid d-block mx-auto" src="images/camera.jpg" alt="Android Phonr">
-	        <div class="card-body p-4 py-0 h-xs-440p">
-	          <h5 class="card-title font-weight-semi-bold mb-3 w-xl-220p mx-auto">Drone Camera</h5>
-	          <p class="price">$99.00</p>
-	        </div>
-	        <p class="btn w-100 px-4 text-center mx-auto">
-	          <input type="submit" class="btn btn-outline-dark btn-lg w-100" name="add-button" value="Buy Now"></p>
-	      </div>
-	    </div>
-
-	    <div class="col-md-4 mt-4 mt-sm-0 card-container">
-	      <div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
-	        <img class="img-fluid d-block mx-auto" src="images/joystick.jpg" alt="joystick">
-	        <div class="card-body p-4 py-0 h-xs-440p">
-	          <h5 class="card-title font-weight-semi-bold mb-3 w-xl-220p mx-auto">PS-5 Joystick</h5>
-	          <p class="price">$45.99</p>
-	        </div>
-	        <p class="btn w-100 px-4 mx-auto">
-	          <input type="submit" class="btn btn-outline-dark btn-lg w-100" name="add-button" value="Buy Now"></p>
-	      </div>
-	    </div>
-	  </div>
-	 -->
+			<div class="row px-5 pt-5">
+				<?php foreach ($products as $key => $product): ?>
+					<div class="col-md-4 mt-4 mt-sm-0 card-container">
+						<div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
+							<img class="img-fluid d-block mx-auto" src="<?php echo $product['image_path'] ?>" alt="">
+								<div class="card-body p-4 py-0 h-xs-440p">
+									<h5 class="card-title font-weight-semi-bold mb-3 w-xl-220p mx-auto"><?php echo $product['name'] ?></h5>
+										<p class="price"><?php echo $product['currency'].'  '.$product['price'] ?></p>
+								</div>
+								<form method="post">
+									<input type="hidden" name="product_key" value="<?php echo $key; ?>">
+										<p class="btn w-100 px-4 mx-auto">
+									<input type="submit" class="btn btn-outline-dark btn-lg w-100" name="add_button" value="Buy Now">
+										</p>
+								</form>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
 	</div>
 
 
