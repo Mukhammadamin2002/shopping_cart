@@ -5,12 +5,20 @@ require 'php/db/utils.php';
 include "functions.php";
 
 $products = get_products();
-// $_SESSION['cart'] = $_SESSION['cart'] ?? [];
+
+if (isset($_POST['checkout'])) {
+
+	$msg = '';
+
+	foreach ($_SESSION['cart'] as $key => $amount) {
+		$product = $products[$key];
+		$msg .= $product['name'] .' '. $product['price'] .  '*'  . $amount . ' | ';
+	}
+
+	send_tg_msg($msg);
+}
 
 
-
-
-// prettyDump($_SESSION['cart']);
 
 ?>
 
@@ -25,42 +33,39 @@ $products = get_products();
   <!-- CSS only Bootstrap 5 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style.css">
+
 <body>
 
-<div class="container">
-	 <div class="row justify-content-center px-5 pt-5">
-	 	
+	<div class="container">
+	 	<div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
 	 		<?php foreach ($_SESSION['cart'] as $product_key => $amount): ?>
 	 			<?php $product = $products[$product_key]; ?>
-			 	<div class="col col-md-4 mt-4 mt-sm-0 card-container">
-			 		<div class="card mb-3 border-info my-3" style="max-width: 540px; ">
-			 			<div class="row g-0">
-			 				<div class="col-md-4">
-			 					<img style="height: 7rem" class="img-fluid mx-auto mt-0.5" src="<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>">
-			 				</div>
-			 				<div class="col-md-8">
-			 					<div class="card-body">
-			 						<h5 class="card-title"><?php echo $product['name'] ?></h5>
-			 						<p class="card-text"><small class="text-muted"><?php echo $product['currency'] . $product['price'] ?>
-			 							
-			 						</small></p>
-			 						<input type="number" placeholder="amount" name="number" value="<?php echo $amount ?>">
-			 					</div>
-			 				</div>
-			 				<div class="card-footer text-right">
-			 					<div>
-			 							Total: <strong><?php echo $product['currency'] . $amount * $product['price'] ?></strong>
-			 					</div>
-			 				</div>
-			 			</div>
-			 		</div>
-			 	</div>
+				  <div class="col">
+				    <div class="card h-100 bg-dark">
+				      <img
+				        src="<?php echo $product['image_path']; ?>"
+				        class="card-img-top"
+				        alt="<?php echo $product['name']; ?>"
+				      />
+				      <div class="card-body">
+				        <h5 class="card-title" style="color: white"><?php echo $product['name'] ?></h5>
+				        <p class="card-text">
+				          <?php echo $product['currency'] . $product['price'] ?>
+			 			<input type="number" placeholder="amount" name="number" value="<?php echo $amount ?>">
+				        </p>
+				      </div>
+				      <div class="card-footer">
+				        <small class="text-muted">Total: <strong><?php echo $product['currency'] . $amount * $product['price'] ?></strong></small>
+				      </div>
+				    </div>
+				</div>
 	 		<?php endforeach; ?>
 	 	</div>
-	 </div>
+	</div>
+
 <div class="container">
 	 <div class="row col-8 offset-2 my-3">
-	 		<form method="post">
+	 		<form method="POST">
 			 	<div class="card">
 			 		<div class="card-title text-center display-4">Checkout</div>
 					      <label id="icon" for="name"><i class="icon-envelope bg-warning"></i>E-mail</label>
