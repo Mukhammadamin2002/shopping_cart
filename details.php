@@ -58,7 +58,7 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
     <div class="container">
         <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) >
       0): ?>
-        <form class="row g-3" method="post">
+        <form class="row g-3" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">>
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                 <?php foreach ($_SESSION['cart'] as $product_key =>
           $amount): ?>
@@ -89,34 +89,39 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
 
             <div class="row col-8 offset-2 my-3">
                 <h3 class="card-title text-center">Checkout</h3>
+                <p><span class="error" style="color: red">* required field.</span></p>
                 <div class="col-md-6">
                     <label id="icon" for="name" for="inputEmail4" class="form-label"><i
                             class="icon-envelope bg-warning"></i> Email</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail4" required />
+                    <input type="email" name="email" class="form-control" id="inputEmail4"  />
+                    <span class="error">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-md-6">
                     <label for="inputPassword4" class="form-label"><i
                             class="icon-user bg-secondary"></i>Password</label>
-                    <input type="password" name="password" class="form-control" id="inputPassword4" required />
+                    <input type="password" name="password" class="form-control" id="inputPassword4"  />
+                    <span class="error">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-12">
                     <label for="inputAddress" class="form-label"><i class="icon-home bg-secondary"></i>Address</label>
                     <input type="text" name="street" class="form-control" id="inputAddress" placeholder="1234 Main St"
-                        required />
+                         />
+                    <span class="error">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-6">
                     <label for="inputAddress2" class="form-label">Address 2</label>
                     <input type="text" name="appartment" class="form-control" id="inputAddress2"
-                        placeholder="Apartment, studio, or floor" required />
+                        placeholder="Apartment, studio, or floor"  />
                 </div>
                 <div class="col-6">
                     <label for="inputPhone" class="form-label"><i class="icon-phone bg-success"></i>Phone Number</label>
                     <input type="text" class="form-control" name="phone_number" id="inputPhone"
-                        placeholder="Phone Number" required />
+                        placeholder="Phone Number"  />
+                    <span class="error">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">City</label>
-                    <input type="text" name="city" class="form-control" id="inputCity" required />
+                    <input type="text" name="city" class="form-control" id="inputCity"  />
                 </div>
                 <div class="col-md-4">
                     <label for="inputState" class="form-label">Country</label>
@@ -130,7 +135,9 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
                 </div>
                 <div class="col-md-2">
                     <label for="inputZip" class="form-label">Zip</label>
-                    <input type="text" name="zip_code" class="form-control" id="inputZip" required />
+                    <input type="text" name="zip_code" class="form-control" id="inputZip"  />
+                    <span class="error">* <?php echo $emailErr;?></span>
+
                 </div>
                 <div class="col-12">
                     <div class="form-check">

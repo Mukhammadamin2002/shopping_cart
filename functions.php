@@ -1,39 +1,44 @@
-<?php 
+<?php
+// define variables and set to empty values
+$emailErr = $passwordErr = $addressErr = $phone_numberErr = $zip_zodeErr = "";
+$email = $password = $zip_zode = $phone_number = $address = "";
 
-$email = '';
-$phone = '';
-$name = '';
-$address = '';
+if (isset($_POST['submit']))
+{
 
-if (isset($_POST['submit'])) {
 
-		$email = sanitize($_POST['email']) ?? '';
-		// $name = sanitize($_POST['name']) ?? '';
-  //       $phone = sanitize($_POST['phone']) ?? '';
-		// $address = sanitize($_POST['address']) ?? '';
+   if (empty($_POST["email"])){
+    $emailErr = "Email is required";}
+   else{
+    $email = test_input($_POST["email"]);}
 
-			if (empty($email)) {
-				
-				$errors['email'] = 'Email is required';
-			} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				$errors['email'] = 'Invalid email adderss';
-			}
+   if (empty($_POST["password"])){
+    $nameErr = "password is required";}
+   else{
+    $password = test_input($_POST["password"]);}
 
-			if (empty($name)) {
-				$errors['name'] = 'Name is required';
-			} elseif (!preg_match("/^([a-zA-Z ])*$/", $name)) {
-				$errors = 'Only lettersand white space alllowed';
-			} 
+   if (empty($_POST["address"])){
+    $address = "";}
+   else{
+    $address = test_input($_POST["address"]);}
 
+   if (empty($_POST["phone_number"])){
+    $phone_number = "";}
+   else{
+    $phone_number = test_input($_POST["phone_number"]);}
+
+   if (empty($_POST["zip_zode"])){
+    $genderErr = "zip_zode is required";}
+   else{
+    $zip_zode = test_input($_POST["zip_zode"]);}
 
 }
 
-     function sanitize($data)
-   {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-   }
+function test_input($data){
 
+     $data = trim($data);
+     $data = stripslashes($data);
+     $data = htmlspecialchars($data);
+     return $data;
+}
 ?>
