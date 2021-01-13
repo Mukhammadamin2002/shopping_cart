@@ -1,4 +1,4 @@
-<?php 
+  <?php 
 session_start();
 
 $_SESSION['cart'] = $_SESSION['cart'] ?? [];

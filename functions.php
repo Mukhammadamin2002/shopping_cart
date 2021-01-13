@@ -8,7 +8,7 @@ $address = '';
 if (isset($_POST['submit'])) {
 
 		$email = sanitize($_POST['email']) ?? '';
-		$name = sanitize($_POST['name']) ?? '';
+		// $name = sanitize($_POST['name']) ?? '';
   //       $phone = sanitize($_POST['phone']) ?? '';
 		// $address = sanitize($_POST['address']) ?? '';
 
