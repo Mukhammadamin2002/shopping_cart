@@ -6,6 +6,10 @@ include "functions.php";
 
 $products = get_products();
 
+if (isset($_POST['remove'])) {
+    unset($_SESSION['cart'][$_POST['remove']]);
+}
+
 if (isset($_POST['submit'])) {
 
 	for ($i=0; $i < count($_SESSION['cart']); $i++) { 
@@ -71,10 +75,12 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
                             <h5 class="card-title" style="color: white">
                                 <?php echo $product['name'] ?>
                             </h5>
+
                             <p class="card-text">
                                 <?php echo $product['currency'] . $product['price'] ?>
                                 <input type="number" placeholder="amount" name="<?php echo $product_key; ?>" value="<?php echo $amount ?>" />
                             </p>
+                            <button class="btn btn-outline-danger  ml-2" type="submit" name="remove" value="<?php echo $product_key; ?>">Remove</button>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Total:
@@ -86,27 +92,27 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
                 </div>
                 <?php endforeach; ?>
             </div>
-
+        <div class="card mb-4 mt-4">
             <div class="row col-8 offset-2 my-3">
                 <h3 class="card-title text-center">Checkout</h3>
-                <p><span class="error" style="color: red">* required field.</span></p>
+                <p><span class="error" style="color:red" style="color: red">* required field!</span></p>
                 <div class="col-md-6">
                     <label id="icon" for="name" for="inputEmail4" class="form-label"><i
                             class="icon-envelope bg-warning"></i> Email</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail4"  />
-                    <span class="error">* <?php echo $emailErr;?></span>
+                    <input type="email" placeholder="Enter Email" name="email" class="form-control" id="inputEmail4"  />
+                    <span class="error" style="color:red">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-md-6">
                     <label for="inputPassword4" class="form-label"><i
                             class="icon-user bg-secondary"></i>Password</label>
-                    <input type="password" name="password" class="form-control" id="inputPassword4"  />
-                    <span class="error">* <?php echo $emailErr;?></span>
+                    <input type="password" placeholder="Enter Password" name="password" class="form-control" id="inputPassword4"  />
+                    <span class="error" style="color:red">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-12">
                     <label for="inputAddress" class="form-label"><i class="icon-home bg-secondary"></i>Address</label>
                     <input type="text" name="street" class="form-control" id="inputAddress" placeholder="1234 Main St"
                          />
-                    <span class="error">* <?php echo $emailErr;?></span>
+                    <span class="error" style="color:red">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-6">
                     <label for="inputAddress2" class="form-label">Address 2</label>
@@ -117,7 +123,7 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
                     <label for="inputPhone" class="form-label"><i class="icon-phone bg-success"></i>Phone Number</label>
                     <input type="text" class="form-control" name="phone_number" id="inputPhone"
                         placeholder="Phone Number"  />
-                    <span class="error">* <?php echo $emailErr;?></span>
+                    <span class="error" style="color:red">* <?php echo $emailErr;?></span>
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">City</label>
@@ -136,7 +142,7 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
                 <div class="col-md-2">
                     <label for="inputZip" class="form-label">Zip</label>
                     <input type="text" name="zip_code" class="form-control" id="inputZip"  />
-                    <span class="error">* <?php echo $emailErr;?></span>
+                    <span class="error" style="color:red">* <?php echo $emailErr;?></span>
 
                 </div>
                 <div class="col-12">
@@ -153,6 +159,7 @@ send_tg_msg($msg); unset($_SESSION['cart']); } ?>
                     </button>
                 </div>
             </div>
+        </div>
         </form>
         <?php else: ?>
         <div class="my-auto mx-auto text-center">

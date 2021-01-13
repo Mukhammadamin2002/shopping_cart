@@ -31,7 +31,7 @@ if (isset($_POST['add_button'])) {
 </head>
 <body>
 <div class="container mt-2">
-	<h2 class="text-center mt-2">Online Shopping Cart</h2>
+	<h2 class="text-center mt-2" style="color: white">Online Shopping Cart</h2>
 	<div class="row">
 		<div class="col-8 offset-2">
 				<?php if (isset($_SESSION['success'])): ?>
@@ -59,7 +59,7 @@ if (isset($_POST['add_button'])) {
 			      		</li>
 			      		<?php endforeach; ?>
 			      	</ul>
-			      	<a href="details.php" class="btn btn-primary my-3">More Details</a>
+			      	<a href="details.php" class="btn btn-primary my-3">Make An Order Done</a>
 			      </div>
 			    </div>
 			  </div>
@@ -68,7 +68,7 @@ if (isset($_POST['add_button'])) {
 	</div>
 </div>
 	 <div class="container">
-			<div class="row px-5 pt-5">
+			<div class="row px-5 pt-5 mb-2">
 				<?php foreach ($products as $key => $product): ?>
 					<div class="col-md-4 mt-4 mt-sm-0 card-container">
 						<div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
